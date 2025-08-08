@@ -1,0 +1,47 @@
+/* Modal.module.css */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 27, 75, 0.6); /* semelhante a bg-indigo-950/50 */
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: relative;
+  background-color: #ffffff;
+  color: #1e1e1e;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 28rem;
+  margin: 1rem;
+  padding: 1.5rem;
+}
+
+.modal.dark {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background-color: #f3f4f6; /* gray-100 */
+  color: #4b5563; /* gray-700 */
+  font-size: 1.25rem;
+  line-height: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.closeBtn:hover {
+  color: #ef4444; /* red-500 */
+}

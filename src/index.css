@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+:root {
+  font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme{
+  --font-poppins: "Poppins", sans-serif;
+  --color-exato-indigo: "#373B7B";
+  --color-exato-indigo-claro: "#91A8D2";
+  --color-exato-laranja: "#FA7935";
+  --color-exato-amarelo: "#FDBF4E";
+}

@@ -7,9 +7,21 @@ import Button from './Button'
 import Modal from './Modal'
 import ResultCard from './ResultCard'
 
+import imgIniciante from '../assets/images/iniciante.png'
+import imgIntermediario from '../assets/images/intermediario.png'
+import imgAvancado from '../assets/images/avancado.png'
+
+
 const Result = ({ userAnswers = [], onRestart }) => {
   const [showModal, setShowModal] = useState(false)
 
+  const imageMap = {
+    'Iniciante': imgIniciante,
+    'Intermediário': imgIntermediario,
+    'Avançado': imgAvancado
+  };
+  
+  
   const score = userAnswers.reduce((acc, answer, index) => {
     const correct = parseInt(atob(encodedAnswers[index]))
     return answer === correct ? acc + 1 : acc
@@ -18,6 +30,8 @@ const Result = ({ userAnswers = [], onRestart }) => {
   const evaluation = evaluations.find(({ range }) => {
     return score >= range[0] && score <= range[1]
   })
+
+  const imageSrc = imageMap[evaluation.title] || imgIniciante;
 
   const errors = questions
     .map((q, i) => {
@@ -43,19 +57,19 @@ const Result = ({ userAnswers = [], onRestart }) => {
         Você acertou <strong>{score}</strong> de {questions.length} questões!
       </div>
 
-      <Button onClick={() => setShowModal(true)} icon="camera">
-        Compartilhar Resultado
-      </Button>
-
-      <div className="bg-indigo-100 dark:bg-indigo-800 p-6 rounded-md shadow text-left">
+      <div className="bg-indigo-100 dark:bg-indigo-800/40 p-6 rounded-md shadow flex flex-col items-center justify-center">
+        
+        <img src={imageSrc} alt={`Exater ${evaluation.title}`} width={250} />
         <h3 className="text-xl font-semibold text-indigo-900 dark:text-white">
           {evaluation.title}
         </h3>
-        <p className="text-gray-800 dark:text-gray-100 mt-2 whitespace-pre-line">
+        <p className="text-gray-800 text-sm text-pretty dark:text-gray-100 mt-2 whitespace-pre-line">
           {evaluation.text}
         </p>
       </div>
-
+        <Button onClick={() => setShowModal(true)} icon="camera">
+          Compartilhar Resultado
+        </Button>
       {errors.length > 0 && (
         <div className="text-left space-y-4">
           <h4 className="text-lg font-semibold text-red-700">
@@ -70,10 +84,10 @@ const Result = ({ userAnswers = [], onRestart }) => {
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                   <strong>{err.index}.</strong> {err.question}
                 </p>
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-500">
                   <strong>Sua resposta:</strong> {err.user || 'Não respondida'}
                 </p>
-                <p className="text-sm text-green-700">
+                <p className="text-sm text-teal-700">
                   <strong>Resposta correta:</strong> {err.correct}
                 </p>
               </li>

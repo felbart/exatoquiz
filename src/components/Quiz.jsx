@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from './Button'
 import { questions } from '../data/questions'
 import Result from './Result'
+import exatoboy from '../assets/images/exatoboy.png'
 
 
 
@@ -31,6 +32,7 @@ const Quiz = () => {
     >
       {step === 'start' && (
         <div className="text-center space-y-4">
+          <img src={exatoboy} alt="Exato" width={150} className='mx-auto'/>
           <h1 className="text-3xl md:text-4xl font-bold text-indigo-950 dark:text-yellow-300">
             Que tipo de <span className="text-orange-500">Exater</span> você é?
           </h1>
@@ -72,10 +74,10 @@ const Quiz = () => {
               <button
                 key={idx}
                 onClick={() => handleAnswer(idx)}
-                className={`w-full text-left px-4 py-3 border-2 rounded-md transition-all ${
+                className={`w-full text-left px-4 py-3 border-2 rounded-md transition-all cursor-pointer ${
                   answers[current] === idx
-                    ? 'bg-indigo-600 text-white border-indigo-800'
-                    : 'border-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800 dark:hover:text-white'
+                    ? 'bg-indigo-800/40 text-indigo-950 border-indigo-900'
+                    : 'border-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800/20 dark:hover:text-white'
                 }`}
               >
                 {opt}

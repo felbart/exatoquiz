@@ -16,9 +16,9 @@ const Result = ({ userAnswers = [], onRestart }) => {
   const [showModal, setShowModal] = useState(false)
 
   const imageMap = {
-    'Iniciante': imgIniciante,
-    'Intermediário': imgIntermediario,
-    'Avançado': imgAvancado
+    'iniciante': imgIniciante,
+    'intermediario': imgIntermediario,
+    'avancado': imgAvancado
   };
   
   
@@ -29,9 +29,9 @@ const Result = ({ userAnswers = [], onRestart }) => {
 
   const evaluation = evaluations.find(({ range }) => {
     return score >= range[0] && score <= range[1]
-  })
+  }) ?? evaluations[0];
 
-  const imageSrc = imageMap[evaluation.title] || imgIniciante;
+  const imageSrc = imageMap[evaluation.illustration] ?? imgIniciante;
 
   const errors = questions
     .map((q, i) => {

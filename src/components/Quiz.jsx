@@ -55,7 +55,7 @@ const Quiz = () => {
         <div className="space-y-6">
           <div className="flex justify-between items-center text-sm text-gray-600 dark:text-gray-200">
             <span>
-              Questão {current + 1} de {questions.length}
+              Questão <strong className='text-orange-600 text-lg bg-gray-200 p-1.5 rounded-sm'>{current + 1}</strong> de {questions.length}
             </span>
             <div className="w-1/2 bg-gray-200 rounded h-2 overflow-hidden">
               <div
@@ -65,7 +65,7 @@ const Quiz = () => {
             </div>
           </div>
 
-          <h2 className="text-xl font-semibold text-indigo-950 dark:text-white">
+          <h2 className="text-lg md:text-xl font-semibold text-indigo-950 dark:text-white">
             {questions[current].question}
           </h2>
 
